@@ -1,6 +1,6 @@
 let imgs = [];
 let imgFilenames = [
-    "artworks\\a1.jpg"
+    "https://github.com/prishasbangera/Virtual-Summer-Art-Gallery-2025/blob/a210aa76bfcc739b7f0973c0da32d576b2370f7b/artworks/a1.jpg"
 ];
 
 async function setup() {
