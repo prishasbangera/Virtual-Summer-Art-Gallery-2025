@@ -1,10 +1,9 @@
 let imgs = [];
 let imgFilenames = [
+    "artworks\\a1.jpg"
 ];
 
 async function setup() {
-
-    console.log("started");
 
     // Load images
 
@@ -26,7 +25,7 @@ async function setup() {
 }
 
 function draw() {
-  perspective(zoomy.value());
+  // perspective(zoomy.value());
   
   background(0);
   
