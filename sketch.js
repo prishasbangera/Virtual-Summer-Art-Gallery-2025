@@ -1,7 +1,19 @@
 let imgs = [];
-const BOX_LEN = 2000;
+const LEN = 2000;
 const imgFilenames = [
-  "artfight.png"
+  "artworks/artfight1.png",
+  "artworks/bestie.jpg",
+  "artworks/caladria_complete.png",
+  "artworks/caladria_incomplete_portal.jpg",
+  "artworks/glitched_library.jpg",
+  "artworks/horizontal_wheat_field.jpg",
+  "artworks/nova_point_1.jpg",
+  "artworks/nova_point_2.jpg",
+  "artworks/outofmymind.jpg",
+  "artworks/shigora_complete_portal.jpg",
+  "artworks/shigora_incomplete_portal.jpg",
+  "artworks/study.jpg",
+  "artworks/wheredidmysmilego.jpg"
 ];
 
 
@@ -10,7 +22,7 @@ async function setup() {
     // Load images
 
     for (let i = 0; i < imgFilenames.length; i++) {
-        let newImg = await loadImage("artworks\\" + imgFilenames[i]);
+        let newImg = await loadImage(imgFilenames[i]);
         imgs.push(newImg);
     }
 
@@ -46,7 +58,7 @@ function draw() {
   // Wall
   push();
   translate(0, 0, 0);
-  box(BOX_LEN);
+  box(LEN);
   pop();
   
   positionAndDrawImages();
@@ -56,22 +68,30 @@ function draw() {
 }
 
 function positionAndDrawImages() {
+  randomSeed(34);
+
   // Front wall
   push();
-  translate(0, 0, -BOX_LEN);
+  translate(0, 0, -0.5 * LEN);
 
-  drawImage(imgs[0], 0.5, BOX_LEN, BOX_LEN);
-
+  drawImage(imgs[0], 1.0, LEN * 0.26, -LEN * 0.3);
+  drawImage(imgs[1], 0.25, -LEN * 0.2, -LEN * 0.2);
 
   pop();
 }
 
 function drawImage(img, scl = 1, x = 0, y = 0) {
+  // depth of box
+
+  let d = 20 + random(-5, 5) + 
+          10*sin(5*frameCount + random(30));
+
+  // draw
   push();
-  translate(x, y, 0);
+  translate(y, x, 0);
   specularMaterial(50);
   shininess(1000);
   texture(img);
-  box(img.height * scl, img.width * scl, 10);
+  box(img.height * scl, img.width * scl, d);
   pop();
 }
