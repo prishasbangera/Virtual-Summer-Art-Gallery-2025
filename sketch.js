@@ -1,8 +1,8 @@
 let imgs = [];
 let imgFilenames = [
-  "https://github.com/prishasbangera/Virtual-Summer-Art-Gallery-2025/blob/a210aa76bfcc739b7f0973c0da32d576b2370f7b/artworks/a1.jpg?raw=true"
-
+  "artworks\\a1.jpg"
 ];
+
 
 async function setup() {
 
@@ -55,7 +55,7 @@ function positionAndDrawImages() {
   push();
   translate(0, 0, 0);
   rotateZ(90);
-  drawImage(imgs[0], 1);
+  drawImage(imgs[0], 0.2);
   pop();
 }
 
