@@ -16,15 +16,15 @@ const imgFilenames = [
   "artworks/study.jpg",
   "artworks/wheredidmysmilego.jpg",
   "artworks/shigora_pagoda.png",
-  "artfight2.png",
-  "gouache_study.jpg",
-  "sua_or_exploring_an_image.png",
-  "sua_fanart.jpg",
-  "academic_sludge.png",
-  "chibi_design.jpg",
-  "color_circle.jpg",
-  "dami_oc_design.png",
-  "uju.png"
+  "artworks/artfight2.png",
+  "artworks/gouache_study.jpg",
+  "artworks/sua_or_exploring_an_image.png",
+  "artworks/sua_fanart.jpg",
+  "artworks/academic_sludge.png",
+  "artworks/chibi_design.jpg",
+  "artworks/color_circle.jpg",
+  "artworks/dami_oc_design.png",
+  "artworks/uju.png"
 ];
 
 
