@@ -1,30 +1,31 @@
 let imgs = [];
-const LEN = 2000;
+const LEN = 3000;
 const imgFilenames = [
   "artworks/artfight1.png",
   "artworks/bestie.jpg",
-  "artworks/shigora_village.jpg",
-  "artworks/caladria_complete_portal.jpg",
-  "artworks/caladria_incomplete_portal.jpg",
-  "artworks/glitched_library.jpg",
-  "artworks/horizontal_wheat_field.jpg",
-  "artworks/nova_point_1.jpg",
-  "artworks/nova_point_2.jpg",
-  "artworks/outofmymind.jpg",
-  "artworks/shigora_complete_portal.jpg",
-  "artworks/shigora_incomplete_portal.jpg",
-  "artworks/study.jpg",
-  "artworks/wheredidmysmilego.jpg",
-  "artworks/shigora_pagoda.png",
-  "artworks/artfight2.png",
-  "artworks/gouache_study.jpg",
-  "artworks/sua_or_exploring_an_image.png",
-  "artworks/sua_fanart.jpg",
-  "artworks/academic_sludge.png",
-  "artworks/chibi_design.jpg",
-  "artworks/color_circle.jpg",
-  "artworks/dami_oc_design.png",
-  "artworks/uju.png"
+  "artworks/outofmymind.jpg", // 9
+  "artworks/artfight2.png", // 15
+  "artworks/dami_oc_design.png" // 22
+
+  // "artworks/shigora_village.jpg", // 2
+  // "artworks/caladria_complete_portal.jpg", // 3
+  // "artworks/caladria_incomplete_portal.jpg", // 4
+  // "artworks/glitched_library.jpg", // 5
+  // "artworks/horizontal_wheat_field.jpg", // 6
+  // "artworks/nova_point_1.jpg", // 7
+  // "artworks/nova_point_2.jpg", // 8
+  // "artworks/shigora_complete_portal.jpg", // 10
+  // "artworks/shigora_incomplete_portal.jpg", // 11
+  // "artworks/study.jpg", // 12
+  // "artworks/wheredidmysmilego.jpg", // 13
+  // "artworks/shigora_pagoda.png", // 14
+  // "artworks/gouache_study.jpg", // 16
+  // "artworks/sua_or_exploring_an_image.png", // 17
+  // "artworks/sua_fanart.jpg", // 18
+  // "artworks/academic_sludge.png", // 19
+  // "artworks/chibi_design.jpg", // 20
+  // "artworks/color_circle.jpg", // 21
+  // "artworks/uju.png" // 23
 ];
 
 
@@ -81,12 +82,20 @@ function draw() {
 function positionAndDrawImages() {
   randomSeed(34);
 
-  // Front wall
+  // Characters wall
   push();
   translate(0, 0, -0.5 * LEN);
 
-  drawImage(imgs[0], 1.0, LEN * 0.26, -LEN * 0.3);
-  drawImage(imgs[1], 0.25, -LEN * 0.2, -LEN * 0.2);
+  drawImage(imgs[0], 1.0, LEN * 0.37, -LEN * 0.4); // artfight 1
+  drawImage(imgs[1], 0.3, -LEN * 0.27, -LEN * 0.27); // bestiee
+  drawImage(imgs[2], 0.4, LEN * 0.26, LEN * 0.26); // outofmymind
+  drawImage(imgs[3], 0.5, LEN * 0.13, -LEN * 0.3); // artfight 2
+  drawImage(imgs[4], 0.2, LEN * 0.36, -LEN * 0.13); // dami 2
+
+  pop();
+
+  push();
+
 
   pop();
 }
