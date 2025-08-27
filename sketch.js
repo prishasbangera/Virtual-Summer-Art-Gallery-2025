@@ -3,7 +3,8 @@ const LEN = 2000;
 const imgFilenames = [
   "artworks/artfight1.png",
   "artworks/bestie.jpg",
-  "artworks/caladria_complete.png",
+  "artworks/shigora_village.jpg",
+  "artworks/caladria_complete_portal.jpg",
   "artworks/caladria_incomplete_portal.jpg",
   "artworks/glitched_library.jpg",
   "artworks/horizontal_wheat_field.jpg",
@@ -13,7 +14,17 @@ const imgFilenames = [
   "artworks/shigora_complete_portal.jpg",
   "artworks/shigora_incomplete_portal.jpg",
   "artworks/study.jpg",
-  "artworks/wheredidmysmilego.jpg"
+  "artworks/wheredidmysmilego.jpg",
+  "artworks/shigora_pagoda.png",
+  "artfight2.png",
+  "gouache_study.jpg",
+  "sua_or_exploring_an_image.png",
+  "sua_fanart.jpg",
+  "academic_sludge.png",
+  "chibi_design.jpg",
+  "color_circle.jpg",
+  "dami_oc_design.png",
+  "uju.png"
 ];
 
 
