@@ -1,5 +1,6 @@
 const LEN = 3500;
 const imgFilenames = [
+
   "artworks/artfight1.png",
   "artworks/bestie.jpg",
   "artworks/outofmymind.jpg",
@@ -25,16 +26,17 @@ const imgFilenames = [
   "artworks/academic_sludge.png",
   "artworks/chibi_design.jpg",
 
-  // "artworks/sua_or_exploring_an_image.png", // 17
-  // "artworks/exploring_image_2.png", // 17
-  // "artworks/sua_fanart.jpg", // 18
-  // "artworks/color_circle.jpg", // 21
-  // "artworks/uju.png" // 23
-  // "artworks/gouache_study.jpg", // 16
+  "artworks/sua_or_exploring_an_image.png",
+  "artworks/exploring_image_2.png",
+  "artworks/sua_fanart.jpg",
+  "artworks/gouache_study.jpg",
+  "artworks/color_circle.jpg",
+  "artworks/uju.png"
 
 ];
 
 let imgs = [];
+let signImg; // The title/author on the bottom
 
 async function setup() {
 
@@ -58,6 +60,12 @@ async function setup() {
     angleMode(DEGREES);
     noStroke();
 
+    // Create the sign
+
+    signImg = createGraphics(LEN, LEN, P2D);
+    signImg.textAlign(CENTER, CENTER);
+    signImg.rectMode(CENTER);
+    signImg.noStroke();
 
 }
 
@@ -72,7 +80,7 @@ function draw() {
   // directionalLight(color(255), 0, 10, -10);
   
   ambientLight(color(100));
-  specularMaterial(100);
+  specularMaterial(10);
   shininess(500);
   
   // Wall
@@ -83,9 +91,11 @@ function draw() {
 
   // Draw images
 
-  ambientLight(0);
-
   positionAndDrawImages();
+
+  // Draw sign
+  
+  drawSign();
   
   // Allow the user to rotate, zoom, and move the camera around
   orbitControl();
@@ -103,7 +113,7 @@ function positionAndDrawImages() {
     translate(0, 0, -0.5 * LEN);
 
     drawImage(imgs[1], 0.35, -LEN * 0.27, -LEN * 0.27); // bestiee
-    drawImage(imgs[2], 0.6, LEN * 0.23, LEN * 0.23); // outofmymind
+    drawImage(imgs[2], 0.63, LEN * 0.22, LEN * 0.22); // outofmymind
     drawImage(imgs[3], 0.76, LEN * 0.08, -LEN * 0.28); // artfight 2
     drawImage(imgs[4], 0.33, LEN * 0.36, -LEN * 0.28); // dami 2
     drawImage(imgs[5], 0.45, -LEN * 0.27, LEN * 0.22); // study
@@ -137,7 +147,7 @@ function positionAndDrawImages() {
     drawImage(imgs[15], portalSize, off1, off2, 2); // shigora incomplete
   pop();
 
-  // Misc 1: Digital art, one traditional art
+  // Misc 1:
 
   push();
     translate(0, 0, LEN * 0.5);
@@ -149,11 +159,24 @@ function positionAndDrawImages() {
     drawImage(imgs[20], 0.38, LEN * 0.06, LEN * 0.38, 2); // chibi design
   pop();
 
-    // drawImage(imgs[0], 1.0, LEN * 0.37, -LEN * 0.4); // artfight 1
+  // Misc 2
+
+  let squareSize = 1.75;
   push();
+
+    translate(-LEN * 0.5, 0, 0);
+    rotateY(90);
+    rotateZ(90);
+
+    drawImage(imgs[0], 1.8, -LEN * 0.28, LEN * 0.27); // artfight 1
+    drawImage(imgs[21], squareSize, LEN * 0.30, -LEN * 0.32); // sua/exploring image 1
+    drawImage(imgs[24], 0.35, LEN * 0.30, 0); // gouache study
+    drawImage(imgs[22], squareSize, LEN * 0.30, LEN * 0.32); // sua/exploring image 2
+    drawImage(imgs[23], 1.0, -LEN * 0.18, -LEN * 0.2); // sua fan art
+    drawImage(imgs[25], 0.55, LEN * 0.02, LEN * 0.39); // color circle
+    drawImage(imgs[26], 1.0, LEN * 0.02, LEN * 0.21); // uju
+
   pop();
-
-
 
 }
 
@@ -179,3 +202,47 @@ function drawImage(img, scl = 1, x = 0, y = 0, opt = 1) {
   pop();
 
 }
+
+function drawSign() {
+
+  // Update sign image
+
+  updateAnimatedSign();
+
+  push();
+
+    translate(0, LEN * 0.5, 0);
+    rotateX(90);
+    rotateZ(-90);
+    texture(signImg);
+    box(signImg.width, signImg.height, 5);
+
+  pop();
+}
+
+function updateAnimatedSign() {
+  
+  // flickering
+  signImg.background(255);
+  // let off = (round(noise(frameCount * 0.03) * 20)) * 0.05 * 0.5 + 0.9;
+  // signImg.background(247 * off, 173 * off, 222 * off); // flicker
+
+  // animated rectangles as decor
+  let rectWidth = 90;
+  randomSeed(20);
+  for (let x = 0; x <= signImg.width + rectWidth; x += rectWidth + 5) {
+    signImg.fill(random(100, 255), 100, random(100, 255), 50);
+    signImg.rect(x, 
+      random(signImg.height) + random(-1, 1) * sin(frameCount + random(56)) * 100,
+      rectWidth,// * 1.7,
+      1700 + 1000 * random(-0.7, 1)); // height
+  }
+
+  // text
+  signImg.textFont('serif', 200)
+  signImg.textStyle(BOLDITALIC);
+  signImg.fill(55, 27, 84);
+  signImg.text("Virtual Summer Art Gallery\nPrisha Bangera, 2025", signImg.width * 0.5, signImg.height * 0.5);
+
+}
+
