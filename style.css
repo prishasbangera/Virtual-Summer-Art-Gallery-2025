@@ -1,7 +1,18 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  margin: 0px;
+  background-color: black;
 }
+
 canvas {
   display: block;
+  overflow:hidden;
+}
+
+#loading-text {
+  color:white;
+  text-align: center;
+  font-family: monospace;
 }

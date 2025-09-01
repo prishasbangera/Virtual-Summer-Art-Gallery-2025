@@ -1,4 +1,5 @@
-const LEN = 3500;
+const LEN = 3500; // cube base
+const NUM_STARS = 200;
 const imgFilenames = [
 
   "artworks/artfight1.png",
@@ -47,6 +48,10 @@ async function setup() {
         imgs.push(newImg);
     }
 
+    // Hide loading text
+
+    document.getElementById("loading-text").style.display = "none";
+
     // Setup canvas
 
     createCanvas(windowWidth, windowHeight, WEBGL);
@@ -70,24 +75,30 @@ async function setup() {
 }
 
 function draw() {
-  // perspective(zoomy.value());
+
+  perspective(70, 1.0, 50, LEN * 3);
   
   background(0);
 
-  // rotateY(frameCount * 0.2);
+  // Lighting
 
-  directionalLight(color(255), 1, 1, 10);
-  // directionalLight(color(255), 0, 10, -10);
-  
-  ambientLight(color(100));
+  directionalLight(255, 255, 255, 1, 1, 0);
+  directionalLight(255, 255, 255, 0, -1, 1);
+  directionalLight(255, 255, 255, -1, 0.5, -1);
+
+  ambientLight(color(10));
   specularMaterial(10);
   shininess(500);
   
   // Wall
+
   push();
   translate(0, 0, 0);
   box(LEN);
   pop();
+
+  // Draw star
+  drawStars();
 
   // Draw images
 
@@ -100,6 +111,37 @@ function draw() {
   // Allow the user to rotate, zoom, and move the camera around
   orbitControl();
 
+}
+
+function drawStars() {
+
+    randomSeed(100);
+
+    push();
+    noLights();
+
+    translate(0, 0);
+    noStroke();
+    fill(255, 125);
+
+    for (let i = 0; i < NUM_STARS; i++) {
+      // distance from origin
+      let rad = randomGaussian(LEN * 1.7, 100);
+
+      // size of star
+      let siz = random(5, 25);
+
+      push();
+      rotateX(random(0, 360));
+      rotateZ(random(0, 360));
+      translate(rad, 0, 0);
+
+      sphere(siz * 0.7);
+      sphere(siz);
+
+      pop();
+    }
+    pop();
 }
 
 function positionAndDrawImages() {
