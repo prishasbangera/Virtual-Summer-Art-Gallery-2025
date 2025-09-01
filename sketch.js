@@ -1,5 +1,6 @@
 const LEN = 3500; // cube base
 const NUM_STARS = 200;
+
 const imgFilenames = [
 
   "artworks/artfight1.png",
@@ -37,6 +38,7 @@ const imgFilenames = [
 ];
 
 let imgs = [];
+let lightColor;
 let signImg; // The title/author on the bottom
 
 async function setup() {
@@ -65,12 +67,15 @@ async function setup() {
     angleMode(DEGREES);
     noStroke();
 
+    lightColor = color(255, 255, 255);
+
     // Create the sign
 
     signImg = createGraphics(LEN, LEN, P2D);
     signImg.textAlign(CENTER, CENTER);
     signImg.rectMode(CENTER);
     signImg.noStroke();
+
 
 }
 
@@ -82,22 +87,24 @@ function draw() {
 
   // Lighting
 
-  directionalLight(255, 255, 255, 1, 1, 0);
-  directionalLight(255, 255, 255, 0, -1, 1);
-  directionalLight(255, 255, 255, -1, 0.5, -1);
+  directionalLight(lightColor, 1, 1, 0);
+  directionalLight(lightColor, 0, -1, 1);
+  directionalLight(lightColor, -1, 0.5, -1);
 
   ambientLight(color(10));
-  specularMaterial(10);
-  shininess(500);
   
-  // Wall
+  // Cube Base
 
   push();
+  specularMaterial(40);
+  shininess(200);
+
   translate(0, 0, 0);
   box(LEN);
   pop();
 
-  // Draw star
+  // Draw stars
+
   drawStars();
 
   // Draw images
@@ -232,8 +239,9 @@ function drawImage(img, scl = 1, x = 0, y = 0, opt = 1) {
   push();
 
   translate(y, x, 0);
-  specularMaterial(50);
-  shininess(1000);
+  specularMaterial(100);
+  shininess(900);
+  ambientMaterial(255);
   texture(img);
 
   if (opt == 1)
