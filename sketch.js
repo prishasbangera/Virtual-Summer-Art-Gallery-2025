@@ -81,7 +81,7 @@ async function setup() {
 
 function draw() {
 
-  perspective(70, 1.0, 50, LEN * 3);
+  perspective(70, width / height, 50, LEN * 3);
   
   background(0);
 
@@ -133,7 +133,7 @@ function drawStars() {
 
     for (let i = 0; i < NUM_STARS; i++) {
       // distance from origin
-      let rad = randomGaussian(LEN * 1.7, 100);
+      let rad = randomGaussian(LEN * 1.7, 500);
 
       // size of star
       let siz = random(5, 25);
@@ -141,6 +141,15 @@ function drawStars() {
       push();
       rotateX(random(0, 360));
       rotateZ(random(0, 360));
+
+      if (random(1) < 0.2) {
+        rotateY(random(-0.5,0.5) * frameCount * 0.1);
+      }
+
+      if (random(1) < 0.2) {
+        rotateZ(random(-0.5, 0.5) * frameCount * 0.05);
+      }
+
       translate(rad, 0, 0);
 
       sphere(siz * 0.7);
