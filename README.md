@@ -4,7 +4,8 @@
 
 A 3D art gallery quickly fashioned with p5.js (a JavaScript graphics library) and all the art I finished over the summer.
 
-[YouTube Demo](https://www.youtube.com/watch?v=6x8JNF1w_sA&feature=youtu.be)
+[YouTube Demo](https://www.youtube.com/watch?v=6x8JNF1w_sA&feature=youtu.be) \
+[Background, Creation Process, and Future Work](https://typst.app/project/rr4Ob5mXBAMUgH57hA2ohX)
 
 ## Description
 
