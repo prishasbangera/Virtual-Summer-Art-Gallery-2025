@@ -1,4 +1,4 @@
-const LEN = 3500; // cube base
+const LEN = 3500 * 0.4; // cube base
 const NUM_STARS = 200;
 
 const imgFilenames = [
@@ -6,7 +6,7 @@ const imgFilenames = [
   "artworks/artfight1.png",
   "artworks/bestie.jpg",
   "artworks/outofmymind.jpg",
-  "artworks/artfight2.png",
+  "artworks/artfight2.jpg",
   "artworks/dami_oc_design.png",
   "artworks/study.jpg",
 
@@ -29,7 +29,7 @@ const imgFilenames = [
   "artworks/chibi_design.jpg",
 
   "artworks/sua_or_exploring_an_image.png",
-  "artworks/exploring_image_2.png",
+  "artworks/exploring_image_2.jpg",
   "artworks/sua_fanart.jpg",
   "artworks/gouache_study.jpg",
   "artworks/color_circle.jpg",
@@ -76,6 +76,8 @@ async function setup() {
     signImg.rectMode(CENTER);
     signImg.noStroke();
 
+    updateAnimatedSign();
+
 
 }
 
@@ -113,6 +115,7 @@ function draw() {
 
   // Draw sign
   
+  // updateAnimatedSign(); // Uncomment for animated title
   drawSign();
   
   // Allow the user to rotate, zoom, and move the camera around
@@ -133,7 +136,7 @@ function drawStars() {
 
     for (let i = 0; i < NUM_STARS; i++) {
       // distance from origin
-      let rad = randomGaussian(LEN * 1.7, 500);
+      let rad = randomGaussian(LEN * 2, 800);
 
       // size of star
       let siz = random(5, 25);
@@ -170,11 +173,11 @@ function positionAndDrawImages() {
     rotateY(90);
     translate(0, 0, -0.5 * LEN);
 
-    drawImage(imgs[1], 0.35, -LEN * 0.27, -LEN * 0.27); // bestiee
-    drawImage(imgs[2], 0.63 * 2, LEN * 0.22, LEN * 0.22); // outofmymind
-    // drawImage(imgs[3], 0.76, LEN * 0.08, -LEN * 0.28); // artfight 2
-    // drawImage(imgs[4], 0.33, LEN * 0.36, -LEN * 0.28); // dami 2
-    // drawImage(imgs[5], 0.45, -LEN * 0.27, LEN * 0.22); // study
+    drawImage(imgs[1], 0.97, -LEN * 0.27, -LEN * 0.27); // bestiee
+    drawImage(imgs[2], 0.97, LEN * 0.22, LEN * 0.22); // outofmymind
+    drawImage(imgs[3], 1.2, LEN * 0.08, -LEN * 0.28); // artfight 2
+    drawImage(imgs[4], 0.51, LEN * 0.36, -LEN * 0.28); // dami 2
+    drawImage(imgs[5], 1.0, -LEN * 0.27, LEN * 0.22); // study
 
   pop();
 
@@ -185,54 +188,54 @@ function positionAndDrawImages() {
     translate(0, 0, -0.5 * LEN);
     rotateZ(90);
 
-    // drawImage(imgs[7], 0.56, 0, LEN * 0.24); // sea swallowed the sky
-    // drawImage(imgs[8], 0.31, LEN * 0.14, -LEN * 0.23); // dungeon
-    // drawImage(imgs[9], 0.6, -LEN * 0.36, -LEN * 0.23); // pagoda
+    drawImage(imgs[7], 0.9, 0, LEN * 0.24); // sea swallowed the sky
+    drawImage(imgs[8], 0.95, LEN * 0.14, -LEN * 0.23); // dungeon
+    drawImage(imgs[9], 1.1, -LEN * 0.36, -LEN * 0.23); // pagoda
 
   pop();
 
   // Portals
 
-  let portalSize = 0.85, off1 = LEN * 0.23, off2 = LEN * 0.32;
+  let portalSize = 1.2, off1 = LEN * 0.23, off2 = LEN * 0.32;
   push();
     translate(LEN * 0.5, 0, 0);   
     rotateY(90);
-    // drawImage(imgs[10], portalSize, -off1, -off2, 2); // caladria complete
-    // drawImage(imgs[11], portalSize, off1, -off2, 2); // caladria incomplete
-    // drawImage(imgs[12], portalSize, -off1, off2*0.035, 2); // nova point 1
-    // drawImage(imgs[13], portalSize, off1, off2*0.035, 2); // nova point 2
-    // drawImage(imgs[14], portalSize, -off1, off2, 2); // shigora complete
-    // drawImage(imgs[15], portalSize, off1, off2, 2); // shigora incomplete
+    drawImage(imgs[10], portalSize, -off1, -off2, 2); // caladria complete
+    drawImage(imgs[11], portalSize, off1, -off2, 2); // caladria incomplete
+    drawImage(imgs[12], portalSize, -off1, off2*0.035, 2); // nova point 1
+    drawImage(imgs[13], portalSize, off1, off2*0.035, 2); // nova point 2
+    drawImage(imgs[14], portalSize, -off1, off2, 2); // shigora complete
+    drawImage(imgs[15], portalSize, off1, off2, 2); // shigora incomplete
   pop();
 
   // Misc 1:
 
   push();
     translate(0, 0, LEN * 0.5);
-    // drawImage(imgs[6], 0.2, LEN * 0.2, -LEN * 0.235, 2); // village
-    // drawImage(imgs[16], 0.25, -LEN * 0.26, -LEN * 0.26, 2); // library glitched
-    // drawImage(imgs[17], 0.23, LEN * 0.36, LEN * 0.26, 2); // wheat field
-    drawImage(imgs[18], 0.45 * 2, -LEN * 0.3, LEN * 0.23, 2); // where did my smile go (two original characters)
-    // drawImage(imgs[19], 0.55, LEN * 0.06, LEN * 0.14, 2); // academic sludge
-    // drawImage(imgs[20], 0.38, LEN * 0.06, LEN * 0.38, 2); // chibi design
+    drawImage(imgs[6], 1.0, LEN * 0.2, -LEN * 0.235, 2); // village
+    drawImage(imgs[16], 0.7, -LEN * 0.26, -LEN * 0.26, 2); // library glitched
+    drawImage(imgs[17], 0.63, LEN * 0.36, LEN * 0.26, 2); // wheat field
+    drawImage(imgs[18], 0.72, -LEN * 0.3, LEN * 0.23, 2); // where did my smile go (two original characters)
+    drawImage(imgs[19], 0.85, LEN * 0.06, LEN * 0.14, 2); // academic sludge
+    drawImage(imgs[20], 0.57, LEN * 0.06, LEN * 0.38, 2); // chibi design
   pop();
 
   // Misc 2
 
-  let squareSize = 1.75;
+  let squareSize = 0.75;
   push();
 
     translate(-LEN * 0.5, 0, 0);
     rotateY(90);
     rotateZ(90);
 
-    // drawImage(imgs[0], 1.8, -LEN * 0.28, LEN * 0.27); // artfight 1
-    // drawImage(imgs[21], squareSize, LEN * 0.30, -LEN * 0.32); // sua/exploring image 1
-    // drawImage(imgs[24], 0.35, LEN * 0.30, 0); // gouache study
-    // drawImage(imgs[22], squareSize, LEN * 0.30, LEN * 0.32); // sua/exploring image 2
-    // drawImage(imgs[23], 1.0, -LEN * 0.18, -LEN * 0.2); // sua fan art
-    // drawImage(imgs[25], 0.55, LEN * 0.02, LEN * 0.39); // color circle
-    // drawImage(imgs[26], 1.0, LEN * 0.02, LEN * 0.21); // uju
+    drawImage(imgs[0], 0.76, -LEN * 0.28, LEN * 0.29); // artfight 1
+    drawImage(imgs[21], squareSize, LEN * 0.30, -LEN * 0.32); // sua/exploring image 1
+    drawImage(imgs[24], 0.55, LEN * 0.30, 0); // gouache study
+    drawImage(imgs[22], squareSize, LEN * 0.30, LEN * 0.32); // sua/exploring image 2
+    drawImage(imgs[23], 0.93, -LEN * 0.18, -LEN * 0.19); // sua fan art
+    drawImage(imgs[25], 0.45, LEN * 0.02, LEN * 0.39); // color circle
+    drawImage(imgs[26], 1.4, LEN * 0.02, LEN * 0.21); // uju
 
   pop();
 
@@ -266,8 +269,6 @@ function drawSign() {
 
   // Update sign image
 
-  updateAnimatedSign();
-
   push();
 
     translate(0, LEN * 0.5, 0);
@@ -298,7 +299,7 @@ function updateAnimatedSign() {
   }
 
   // text
-  signImg.textFont('serif', 140)
+  signImg.textFont('serif', 90)
   signImg.textStyle(BOLDITALIC);
   signImg.fill(55, 27, 84);
   signImg.text("Virtual Summer Art Gallery\nPrisha Bangera, 2025", signImg.width * 0.5, signImg.height * 0.5);
